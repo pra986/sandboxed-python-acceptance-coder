@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sandboxed-python-acceptance-coder"
+version = "0.1.0"
+description = "Project 37: CrewAI sandboxed Python coding agent with subprocess execution timeouts, resource bounds, independent I/O acceptance tests, and verbatim exit-code reporting."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "pydantic>=2.0,<3.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+crewai = ["crewai>=0.80.0"]
+dev = ["pytest>=8.0.0"]
+
+[project.scripts]
+sandbox-coder = "sandbox_coder.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
