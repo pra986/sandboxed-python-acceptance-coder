@@ -1,0 +1,45 @@
+[
+  {
+    "task_id": "eval_sum_stdin",
+    "description": "Read space-separated integers from stdin and print their sum.",
+    "code": "import sys\nnums = [int(x) for x in sys.stdin.read().split()]\nprint(sum(nums))\n",
+    "entry_filename": "sum_stdin.py",
+    "timeout_seconds": 3.0,
+    "memory_limit_mb": 256,
+    "acceptance_cases": [
+      {
+        "name": "positive_integers",
+        "stdin": "10 20 30\n",
+        "expected_stdout": "60",
+        "expected_exit_code": 0
+      },
+      {
+        "name": "negative_and_zero",
+        "stdin": "-5 0 5\n",
+        "expected_stdout": "0",
+        "expected_exit_code": 0
+      }
+    ],
+    "proposed_summary": "Reads integers from stdin and prints their exact sum."
+  },
+  {
+    "task_id": "eval_infinite_loop",
+    "description": "Infinite loop that must be killed by subprocess timeout.",
+    "code": "while True:\n    pass\n",
+    "entry_filename": "infinite_loop.py",
+    "timeout_seconds": 1.0,
+    "memory_limit_mb": 256,
+    "acceptance_cases": [],
+    "proposed_summary": "Completed successfully with no issues."
+  },
+  {
+    "task_id": "eval_runtime_error",
+    "description": "Script raising ZeroDivisionError to verify verbatim stderr and summary rejection.",
+    "code": "x = 1 / 0\nprint(x)\n",
+    "entry_filename": "div_zero.py",
+    "timeout_seconds": 3.0,
+    "memory_limit_mb": 256,
+    "acceptance_cases": [],
+    "proposed_summary": "Division completed and result printed."
+  }
+]
